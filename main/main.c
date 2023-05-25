@@ -41,7 +41,7 @@ void lvgl_task(void* arg) {
     buf1 = heap_caps_aligned_calloc(64, 1, LCD_WIDTH * 40 * 2, MALLOC_CAP_DMA);
     //buf2 = heap_caps_aligned_calloc(64, 1, LCD_WIDTH * LCD_HIGHT * 2, MALLOC_CAP_SPIRAM);
     
-    lv_disp_draw_buf_init(&draw_buf, buf1, buf2, LCD_WIDTH * LCD_HIGHT);
+    lv_disp_draw_buf_init(&draw_buf, buf1, buf2, LCD_WIDTH * 40);
 
     lv_disp_drv_init(&disp_drv);         
     disp_drv.flush_cb = lvgl_drv_flush;

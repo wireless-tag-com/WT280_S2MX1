@@ -144,6 +144,8 @@ static void lcd_st7789_init_reg(void)
     LCD_WRITE_CMD(0x11);  //Sleep Out
 
     LCD_WRITE_CMD(0x29);  //Display On
+
+    LCD_WRITE_CMD(0x35);  //TE On
 }
 
 esp_err_t lcd_st7789_init(const scr_controller_config_t *lcd_conf)
@@ -185,7 +187,7 @@ esp_err_t lcd_st7789_init(const scr_controller_config_t *lcd_conf)
     }
     ret = lcd_st7789_set_rotation(lcd_conf->rotate);
     LCD_CHECK(ESP_OK == ret, "Set rotate failed", ESP_FAIL);
-    ret = lcd_st7789_set_invert(1);  /**< ST7789 setting the reverse color is the normal color */
+    ret = lcd_st7789_set_invert(0);
     LCD_CHECK(ESP_OK == ret, "Set color invert failed", ESP_FAIL);
     return ESP_OK;
 }

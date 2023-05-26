@@ -38,7 +38,7 @@ void screen_init(scr_driver_t* s_lcd, SemaphoreHandle_t semaphore) {
         .pin_num_cs = LCD_CS_PIN,
         .pin_num_wr = LCD_WR_PIN,                          
         .pin_num_rs = LCD_RS_PIN,
-        .clk_freq = 40000000,
+        .clk_freq = 20000000,
         .i2s_port = I2S_NUM_0,
         .buffer_size = 16000,
         .swap_data = true,
@@ -46,9 +46,9 @@ void screen_init(scr_driver_t* s_lcd, SemaphoreHandle_t semaphore) {
 
     scr_interface_driver_t *iface_drv;
     scr_interface_create(SCREEN_IFACE_8080, &i2s_lcd_cfg, &iface_drv);
-    extern scr_driver_t lcd_st7796_default_driver;
+    extern scr_driver_t lcd_st7789_default_driver;
 
-    *s_lcd = lcd_st7796_default_driver;
+    *s_lcd = lcd_st7789_default_driver;
 
     scr_controller_config_t lcd_cfg = {
         .interface_drv = iface_drv,
